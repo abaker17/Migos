@@ -63,7 +63,10 @@ ROOT_URLCONF = 'ribbit.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': os.path.join(PROJECT_PATH, 'templates'),
+        'DIRS': [
+            os.path.join(PROJECT_PATH, 'templates'),
+            'C:\\Users\\SFStem04\\ribbit\\ribbit_app'
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
