@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from ribbit_app.views import index, login_view, logout_view, signup, public, submit
+from ribbit_app.views import index, login_view, logout_view, signup, public, submit, users, follow
 
 urlpatterns = [
     url(r'^$', index, name='root'), # root
@@ -24,4 +24,8 @@ urlpatterns = [
     url(r'^signup$', signup, name='signup'), # signup
     url(r'^submit$', submit, name='submit'), # submit new ribbit
     url(r'^ribbits$', public, name='ribbits'), # public ribbits
+    url(r'^users/$', users, name='users'),
+    url(r'^users/(?P<username>\w{0,30})/$', users, name='users'),
+    url(r'^follow$', follow, name='follow'),
+
 ]
