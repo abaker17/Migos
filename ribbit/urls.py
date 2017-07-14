@@ -15,11 +15,13 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from ribbit_app.views import index, login_view, logout_view, signup
+from ribbit_app.views import index, login_view, logout_view, signup, public, submit
 
 urlpatterns = [
     url(r'^$', index, name='root'), # root
     url(r'^login$', login_view, name='login'), # login
     url(r'^logout$', logout_view, name='logout'), # logout
     url(r'^signup$', signup, name='signup'), # signup
+    url(r'^submit$', submit, name='submit'), # submit new ribbit
+    url(r'^ribbits$', public, name='ribbits'), # public ribbits
 ]
