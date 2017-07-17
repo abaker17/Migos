@@ -3,17 +3,39 @@
 <head>
     <link rel="stylesheet/less" href="{{ STATIC_URL }}style.less">
     <script src="{{ STATIC_URL }}less.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Monoton" rel="stylesheet">
+    <style>
+    h1 {
+    	font-family: 'Monoton', cursive;
+    	color: @text-color;
+      font-size: 16px;
+    }
+
+  body{
+    background-color:#E0FFFF;
+  }
+    a{
+      color:blue;
+    }
+    .wrapper{
+      color:blue;
+    }
+    span{
+      color:blue;
+    }
+    </style>
+
 </head>
 <body>
     <header>
         <div class="wrapper">
-            <img src="{{ STATIC_URL }}gfx/logo.png">
-            <span>Twitter Clone</span>
+            <h1>MIGOS</h1>
+            <span>GANGANGANG</span>
             {% block login %}
             <a href="/">Home</a>
             <a href="/users/">Public Profiles</a>
-            <a href="/users/{{ username }}">My Profile</a>
-            <a href="/ribbits">Public Ribbits</a>
+            <a href="/users/{{ username }}">My Page</a>
+            <a href="/ribbits">Community</a>
             <form action="/logout">
                 <input type="submit" id="btnLogOut" value="Log Out">
             </form>
@@ -44,9 +66,9 @@
     </div>
     <footer>
         <div class="wrapper">
-            Ribbit - A Twitter Clone Tutorial
+            FOR THE CULTURE
             <a href="http://net.tutsplus.com">
-                <img src="{{ STATIC_URL }}gfx/logo-nettuts.png">
+                <img src="{{ STATIC_URL }}logo-nettuts.png">
             </a>
             <a href="http://www.djangoproject.com/">
                 <img src="https://www.djangoproject.com/m/img/badges/djangomade124x25.gif" border="0" alt="Made with Django." title="Made with Django." />

@@ -16,9 +16,9 @@
     {{ user_form.non_field_errors }}
 </div>
 {% endif %}
-<img src="{{ STATIC_URL}}gfx/frog.jpg">
+<img src="{{ STATIC_URL}}migos.png" width="550px" height="421px">
 <div class="panel right">
-    <h1>New to Ribbit?</h1>
+    <h1>New to Migos?</h1>
     <p>
         <form action="/signup" method="post">{% csrf_token %}
             {% for field in user_form %}

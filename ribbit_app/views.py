@@ -6,7 +6,7 @@ from ribbit_app.models import Ribbit
 from django.contrib.auth.decorators import login_required
 from django.db.models import Count
 from django.http import Http404
-
+from django.utils.encoding import force_bytes
 
 def get_latest(user):
     try:
@@ -66,14 +66,16 @@ def index(request, auth_form=None, user_form=None):
         ribbit_form = RibbitForm()
         user = request.user
         ribbits_self = Ribbit.objects.filter(user=user.id)
-        ribbits_buddies = Ribbit.objects.filter(user__userprofile__in=user.profile.follows.all)
+        ribbits_buddies = Ribbit.objects.filter(user__userprofile__in=user.profile.follows.all())
         ribbits = ribbits_self | ribbits_buddies
 
         return render(request,
                       'buddies.html',
-                      {'ribbit_form': ribbit_form, 'user': user,
+                      {'ribbit_form': ribbit_form,
+                       'user': user,
                        'ribbits': ribbits,
-                       'next_url': '/', })
+                       'next_url': '/',
+                       })
     else:
         # User is not logged in
         auth_form = auth_form or AuthenticateForm()
@@ -103,7 +105,7 @@ def signup(request):
     user_form = UserCreateForm(data=request.POST)
     if request.method == 'POST':
         if user_form.is_valid():
-            username = user_form.clean_username()
+            username = user_form.cleaned_data['username']
             password = user_form.clean_password2()
             user_form.save()
             user = authenticate(username=username, password=password)
